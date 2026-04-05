@@ -1,6 +1,7 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -117,14 +118,114 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  /* colors */
+  --color-brand-primary-50: #fef9ee;
+  --color-brand-primary-100: #fdf1d7;
+  --color-brand-primary-200: #fbdfad;
+  --color-brand-primary-300: #f6bd60;
+  --color-brand-primary-400: #f3a644;
+  --color-brand-primary-500: #f08b1f;
+  --color-brand-primary-600: #e17115;
+  --color-brand-primary-700: #bb5613;
+  --color-brand-primary-800: #944518;
+  --color-brand-primary-900: #783a16;
+  --color-brand-primary-950: #411b09;
+
+  --color-brand-secondary-50: #fcf5f4;
+  --color-brand-secondary-100: #fae9e6;
+  --color-brand-secondary-200: #f5cac3;
+  --color-brand-secondary-300: #f1b9b0;
+  --color-brand-secondary-400: #e79082;
+  --color-brand-secondary-500: #d96c5a;
+  --color-brand-secondary-600: #c5503d;
+  --color-brand-secondary-700: #a54030;
+  --color-brand-secondary-800: #89382b;
+  --color-brand-secondary-900: #72342a;
+  --color-brand-secondary-950: #3d1812;
+
+  --color-brand-accent-50: #f5f8f7;
+  --color-brand-accent-100: #dfe8e5;
+  --color-brand-accent-200: #bed1cc;
+  --color-brand-accent-300: #84a59d;
+  --color-brand-accent-400: #70918a;
+  --color-brand-accent-500: #557770;
+  --color-brand-accent-600: #435e59;
+  --color-brand-accent-700: #384d4a;
+  --color-brand-accent-800: #303f3d;
+  --color-brand-accent-900: #2b3634;
+  --color-brand-accent-950: #151e1d;
+
+  --color-brand-alert-50: #fdf3f3;
+  --color-brand-alert-100: #fde3e3;
+  --color-brand-alert-200: #fbcecd;
+  --color-brand-alert-300: #f7abaa;
+  --color-brand-alert-400: #f28482;
+  --color-brand-alert-500: #e6504d;
+  --color-brand-alert-600: #d3322f;
+  --color-brand-alert-700: #b12724;
+  --color-brand-alert-800: #922422;
+  --color-brand-alert-900: #7a2422;
+  --color-brand-alert-950: #420e0d;
+
+  --color-brand-black-50: #fafafa;
+  --color-brand-black-100: #f5f5f5;
+  --color-brand-black-200: #e6e6e6;
+  --color-brand-black-300: #d6d6d6;
+  --color-brand-black-400: #a5a5a5;
+  --color-brand-black-500: #767676;
+  --color-brand-black-600: #575757;
+  --color-brand-black-700: #434343;
+  --color-brand-black-800: #292929;
+  --color-brand-black-900: #1a1a1a;
+  --color-brand-black-950: #000000;
+
+  --color-brand-white: #f7ede2;
+
+  /* typography */
+  /* font families */
+  --font-karla: var(--font-karla);
+  --font-newsreader: var(--font-newsreader);
+
+  /* font sizes */
+  --text-fs-900: 4.5rem;
+  --text-fs-800: 3.75rem;
+  --text-fs-700: 2.5rem;
+  --text-fs-600: 1.75rem;
+  --text-fs-500: 1.25rem;
+  --text-fs-400: 1rem;
+  --text-fs-300: 0.75rem;
+  --text-fs-200: 0.5rem;
+
+  /* breakpoints */
+  --breakpoint-lg: 1000px;
+  --breakpoint-md: 760px;
+}
+
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground;
+    @apply font-karla font-normal text-fs-400 bg-brand-white text-brand-black-900 overflow-x-hidden tracking-normal leading-normal;
   }
   html {
-    @apply font-sans;
+    @apply scroll-smooth;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance leading-none;
+  }
+  p {
+    @apply text-pretty;
+  }
+}
+
+@utility form-label {
+  @apply ml-0.5 after:absolute after:content-["*"] after:text-brand-alert-600 block;
+}
+
+@utility form-error-message {
+  @apply italic text-fs-300 text-brand-alert-600;
 }
